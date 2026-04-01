@@ -54,11 +54,12 @@ struct EventExtractionView: View {
             .padding()
             .animation(.default, value: service.extractedEvent != nil)
         }
+        .scrollDismissesKeyboard(.interactively)
     }
 
     @ViewBuilder
     private var unavailableView: some View {
-        switch SystemLanguageModel.default.availability {
+        switch service.modelAvailability {
         case .available:
             EmptyView()
         case .unavailable(let reason):
