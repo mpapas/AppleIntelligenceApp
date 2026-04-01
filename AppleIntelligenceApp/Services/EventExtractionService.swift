@@ -11,8 +11,8 @@ class EventExtractionService {
     )
 
     @MainActor private(set) var isExtracting = false
-    private(set) var extractedEvent: ExtractedEvent?
-    private(set) var errorMessage: String?
+    @MainActor private(set) var extractedEvent: ExtractedEvent?
+    @MainActor private(set) var errorMessage: String?
 
     var modelAvailability: SystemLanguageModel.Availability {
         SystemLanguageModel.default.availability
@@ -28,6 +28,11 @@ class EventExtractionService {
         extractedEvent = nil
         errorMessage = nil
         defer { isExtracting = false }
+
+        guard isAvailable else {
+            errorMessage = "Apple Intelligence is not available on this device."
+            return
+        }
 
         let session = LanguageModelSession(
             instructions: """
