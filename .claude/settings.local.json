@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xcodebuild -list -project AppleIntelligenceApp.xcodeproj)",
+      "Bash(gh issue:*)",
+      "Bash(xcodebuild -project AppleIntelligenceApp.xcodeproj -scheme AppleIntelligenceApp build -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest')",
+      "Bash(xcodebuild:*)",
+      "Bash(xcrun simctl:*)",
+      "Bash(git:*)",
+      "Bash(python3 scripts/add_file_to_project.py AppleIntelligenceApp/Views/EventExtractionView.swift)"
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Check if the file being created/edited is a Swift file. If it is, verify: 1) No force unwraps (! used on optionals), 2) No print() statements (should use os.Logger), 3) No singleton pattern (static let shared). If any violations are found, respond with 'no' and explain. Otherwise respond 'yes'."
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [],
+    "deny": []
+  },
+  "preferences": {
+    "language": "swift"
+  },
+  "extraKnownMarketplaces": {
+    "lextech-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "LextechGlobal/lextech-claude-marketplace"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "lextech-base@lextech-marketplace": true,
+    "lextech-swift@lextech-marketplace": true
+  }
+}
